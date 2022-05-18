@@ -24,7 +24,6 @@ public class Sketch extends PApplet {
    */
   public void setup() {
     background(0);
-    intGrid [1][5] = 1;
   }
 
   /**
@@ -33,11 +32,11 @@ public class Sketch extends PApplet {
   public void draw() {
     for (int row = 0; row < intRowCount; row++) {
       for (int column = 0; column < intColumnCount; column++) {
-        if (intGrid [1][5] == 1){
+        if (intGrid[row][column] == 1){
           fill(0, 255, 0);
           rect(column * (intCellWidth + intMargin) + intMargin, row * (intCellHeight + intMargin) + intMargin, intCellWidth, intCellHeight);
         }
-        else {
+        else{
           fill(255);
           rect(column * (intCellWidth + intMargin) + intMargin, row * (intCellHeight + intMargin) + intMargin, intCellWidth, intCellHeight);
         }
@@ -45,7 +44,19 @@ public class Sketch extends PApplet {
     }
   }
 
-  public void mousePressed(){
-    
+  /**
+   * This section is responsible for determing what column and row the is clicked, then assigning those values to a 2D array used in the draw method
+   */
+  public void mousePressed() {
+    System.out.println("click");
+    System.out.println("mouse coordinates: (" + mouseX + ", " + mouseY + ")");
+    for (int row = 0; row < intRowCount; row++) {
+      for (int column = 0; column < intColumnCount; column++){
+        if (mouseX > column * (intCellWidth + intMargin) + intMargin && mouseX < column * (intCellWidth + intMargin) + intMargin + 20 && mouseY > row * (intCellHeight + intMargin) + intMargin && mouseY < row * (intCellWidth + intMargin) + intCellWidth + intMargin) {
+          System.out.println("x: " + (column + 1) + ", y: " + (row + 1));
+           
+        }
+      }
+    } 
   }
 }

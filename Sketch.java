@@ -1,6 +1,7 @@
 import processing.core.PApplet;
 
 public class Sketch extends PApplet {
+
 	// global variables
   int intCellWidth = 20;
   int intCellHeight = 20;

@@ -11,6 +11,10 @@ public class Sketch extends PApplet {
   int intScreenWidth = intCellWidth * intColumnCount + (intMargin * (intColumnCount + 1));
   int intScreenHeight = intCellHeight * intRowCount + (intMargin * (intRowCount + 1));
   int intGrid [][] = new int[10][10];
+  int intLeft;
+  int intRight;
+  int intUp;
+  int intDown;
   /**
    * Called once at the beginning of execution, put your size all in this method
    */
@@ -37,7 +41,7 @@ public class Sketch extends PApplet {
           fill(0, 255, 0);
           rect(column * (intCellWidth + intMargin) + intMargin, row * (intCellHeight + intMargin) + intMargin, intCellWidth, intCellHeight);
         }
-        else{
+        else if (intGrid[row][column] == 0) {
           fill(255);
           rect(column * (intCellWidth + intMargin) + intMargin, row * (intCellHeight + intMargin) + intMargin, intCellWidth, intCellHeight);
         }
@@ -55,7 +59,24 @@ public class Sketch extends PApplet {
       for (int column = 0; column < intColumnCount; column++){
         if (mouseX > column * (intCellWidth + intMargin) + intMargin && mouseX < column * (intCellWidth + intMargin) + intMargin + 20 && mouseY > row * (intCellHeight + intMargin) + intMargin && mouseY < row * (intCellWidth + intMargin) + intCellWidth + intMargin) {
           System.out.println("x: " + (column + 1) + ", y: " + (row + 1));
-           
+          if (intGrid[row][column] == 1) {
+             intGrid[row][column] = 0;
+           }
+           else if (intGrid[row][column] == 0) {
+            intGrid[row][column] = 1;
+          }
+          if (intGrid[row + 1][column] == 0) {
+            intGrid[row][column] = 1;
+          }
+          else if (intGrid[row + 1][column] == 1) {
+            intGrid[row][column] = 0;
+          }
+          if (intGrid[row - 1][column] == 0) {
+            intGrid[row][column] = 1;
+          }
+          else if (intGrid[row - 1][column] == 1) {
+            intGrid[row][column] = 0;
+          }
         }
       }
     } 

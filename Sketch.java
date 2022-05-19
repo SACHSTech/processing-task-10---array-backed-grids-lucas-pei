@@ -57,25 +57,263 @@ public class Sketch extends PApplet {
     System.out.println("mouse coordinates: (" + mouseX + ", " + mouseY + ")");
     for (int row = 0; row < intRowCount; row++) {
       for (int column = 0; column < intColumnCount; column++){
-        if (mouseX > column * (intCellWidth + intMargin) + intMargin && mouseX < column * (intCellWidth + intMargin) + intMargin + 20 && mouseY > row * (intCellHeight + intMargin) + intMargin && mouseY < row * (intCellWidth + intMargin) + intCellWidth + intMargin) {
+        if (mouseX > column * (intCellWidth + intMargin) + intMargin && mouseX < column * (intCellWidth + intMargin) + intMargin + intCellWidth && mouseY > row * (intCellHeight + intMargin) + intMargin && mouseY < row * (intCellWidth + intMargin) + intCellWidth + intMargin) {
           System.out.println("x: " + (column + 1) + ", y: " + (row + 1));
-          if (intGrid[row][column] == 1) {
-             intGrid[row][column] = 0;
-           }
-           else if (intGrid[row][column] == 0) {
-            intGrid[row][column] = 1;
+          // top left corner code
+          if (row == 0 && column == 0) {
+            // changes values for top left corner
+            if (intGrid[row][column] == 0){
+              intGrid[row][column] = 1;
+            }
+            else if (intGrid[row][column] == 1) {
+              intGrid[row][column] = 0;
+            }
+            // changes values for the box 1 right
+            if (intGrid[row][column + 1] == 0){
+              intGrid[row][column + 1] = 1;
+            }
+            else if (intGrid[row][column + 1] == 1){
+              intGrid[row][column + 1] = 0;
+            }
+            // changes values for the box 1 down
+            if (intGrid[row + 1][column] == 0){
+              intGrid[row + 1][column] = 1;
+            }
+            else if (intGrid[row + 1][column] == 1){
+              intGrid[row + 1][column] = 0;
+            }
           }
-          if (intGrid[row + 1][column] == 0) {
-            intGrid[row][column] = 1;
+          // bottom right corner code
+          else if (row == 9 && column == 9) {
+            // changes values for bottom right corner
+            if (intGrid[row][column] == 0){
+              intGrid[row][column] = 1;
+            }
+            else if (intGrid[row][column] == 1) {
+              intGrid[row][column] = 0;
+            }
+          // changes values for the box 1 up
+            if (intGrid[row - 1][column] == 0){
+              intGrid[row - 1][column] = 1;
+            }
+            else if (intGrid[row - 1][column] == 1){
+              intGrid[row - 1][column] = 0;
+            }
+          // changes values for the box 1 left
+            if (intGrid[row][column - 1] == 0){
+              intGrid[row][column - 1] = 1;
+            }
+            else if (intGrid[row][column - 1] == 1){
+              intGrid[row][column - 1] = 0;
+            }
           }
-          else if (intGrid[row + 1][column] == 1) {
-            intGrid[row][column] = 0;
+          // bottom left corner code
+          else if (row == 9 && column == 0){
+            // changes values for bottom left corner
+            if (intGrid[row][column] == 0){
+              intGrid[row][column] = 1;
+            }
+            else if (intGrid[row][column] == 1) {
+              intGrid[row][column] = 0;
+            }
+            // changes values for the box 1 up
+            if (intGrid[row - 1][column] == 0){
+              intGrid[row - 1][column] = 1;
+            }
+            else if (intGrid[row - 1][column] == 1){
+              intGrid[row - 1][column] = 0;
+            }
+            // changes values for the box 1 left
+            if (intGrid[row][column + 1] == 0){
+              intGrid[row][column + 1] = 1;
+            }
+            else if (intGrid[row][column + 1] == 1){
+              intGrid[row][column + 1] = 0;
+            }
           }
-          if (intGrid[row - 1][column] == 0) {
-            intGrid[row][column] = 1;
+          // top left corner code
+          else if (row == 0 && column == 9) {
+            // changes values for the top right 
+            if (intGrid[row][column] == 0) {
+              intGrid[row][column] = 1;
+            }
+            else if (intGrid[row][column] == 1) {
+              intGrid[row][column] = 0;
+            }
+            // changes values for the box 1 left
+            if (intGrid[row][column - 1] == 0){
+              intGrid[row][column - 1] = 1;
+            }
+            else if (intGrid[row][column - 1] == 1){
+              intGrid[row][column - 1] = 0;
+            }
+            // changes values for the box 1 down
+            if (intGrid[row + 1][column] == 0){
+              intGrid[row + 1][column] = 1;
+            }
+            else if (intGrid[row + 1][column] == 1){
+              intGrid[row + 1][column] = 0;
+            }
           }
-          else if (intGrid[row - 1][column] == 1) {
-            intGrid[row][column] = 0;
+          // left edge code
+          else if (row > 0 && row < 9 && column == 0) {
+            // changes values for the box clicked 
+            if (intGrid[row][column] == 0) {
+              intGrid[row][column] = 1;
+            }
+            else if (intGrid[row][column] == 1) {
+              intGrid[row][column] = 0;
+            }
+            // changes values for the box 1 right
+            if (intGrid[row][column + 1] == 0){
+              intGrid[row][column + 1] = 1;
+            }
+            else if (intGrid[row][column + 1] == 1){
+              intGrid[row][column + 1] = 0;
+            }
+            // changes values for the box 1 up
+            if (intGrid[row - 1][column] == 0){
+              intGrid[row - 1][column] = 1;
+            }
+            else if (intGrid[row - 1][column] == 1){
+              intGrid[row - 1][column] = 0;
+            }
+            // changes values for the box 1 down
+            if (intGrid[row + 1][column] == 0){
+              intGrid[row + 1][column] = 1;
+            }
+            else if (intGrid[row + 1][column] == 1){
+              intGrid[row + 1][column] = 0;
+            }
+          }
+          // right edge code
+          else if (row > 0 && row < 9 && column == 9){
+            // changes values for the box clicked 
+            if (intGrid[row][column] == 0) {
+              intGrid[row][column] = 1;
+            }
+            else if (intGrid[row][column] == 1) {
+              intGrid[row][column] = 0;
+            }
+            // changes values for the box 1 left
+            if (intGrid[row][column - 1] == 0){
+              intGrid[row][column - 1] = 1;
+            }
+            else if (intGrid[row][column - 1] == 1){
+              intGrid[row][column - 1] = 0;
+            }
+            // changes values for the box 1 up
+            if (intGrid[row - 1][column] == 0){
+              intGrid[row - 1][column] = 1;
+            }
+            else if (intGrid[row - 1][column] == 1){
+              intGrid[row - 1][column] = 0;
+            }
+            // changes values for the box 1 down
+            if (intGrid[row + 1][column] == 0){
+              intGrid[row + 1][column] = 1;
+            }
+            else if (intGrid[row + 1][column] == 1){
+              intGrid[row + 1][column] = 0;
+            }
+          }
+          // top edge code
+          else if (row == 0 && column > 0 && column < 9) {
+            // changes values for the box clicked 
+            if (intGrid[row][column] == 0) {
+              intGrid[row][column] = 1;
+            }
+            else if (intGrid[row][column] == 1) {
+              intGrid[row][column] = 0;
+            }
+            // changes values for the box 1 right
+            if (intGrid[row][column + 1] == 0){
+              intGrid[row][column + 1] = 1;
+            }
+            else if (intGrid[row][column + 1] == 1){
+              intGrid[row][column + 1] = 0;
+            }
+            // changes values for the box 1 left
+            if (intGrid[row][column - 1] == 0){
+              intGrid[row][column - 1] = 1;
+            }
+            else if (intGrid[row][column - 1] == 1){
+              intGrid[row][column - 1] = 0;
+            }
+            // changes values for the box 1 down
+            if (intGrid[row + 1][column] == 0){
+              intGrid[row + 1][column] = 1;
+            }
+            else if (intGrid[row + 1][column] == 1){
+              intGrid[row + 1][column] = 0;
+            }
+          }
+          else if (row == 9 && column > 0 && column < 9) {
+            // changes values for the box clicked 
+            if (intGrid[row][column] == 0) {
+              intGrid[row][column] = 1;
+            }
+            else if (intGrid[row][column] == 1) {
+              intGrid[row][column] = 0;
+            }
+            // changes values for the box 1 right
+            if (intGrid[row][column + 1] == 0){
+              intGrid[row][column + 1] = 1;
+            }
+            else if (intGrid[row][column + 1] == 1){
+              intGrid[row][column + 1] = 0;
+            }
+            // changes values for the box 1 left
+            if (intGrid[row][column - 1] == 0){
+              intGrid[row][column - 1] = 1;
+            }
+            else if (intGrid[row][column - 1] == 1){
+              intGrid[row][column - 1] = 0;
+            }
+            // changes values for the box 1 up
+            if (intGrid[row - 1][column] == 0){
+              intGrid[row - 1][column] = 1;
+            }
+            else if (intGrid[row - 1][column] == 1){
+              intGrid[row -1][column] = 0;
+            }
+          }
+          else {
+            // changes values for the box clicked 
+            if (intGrid[row][column] == 0) {
+              intGrid[row][column] = 1;
+            }
+            else if (intGrid[row][column] == 1) {
+              intGrid[row][column] = 0;
+            }
+            // changes values for the box 1 down
+            if (intGrid[row + 1][column] == 0){
+              intGrid[row + 1][column] = 1;
+            }
+            else if (intGrid[row + 1][column] == 1){
+              intGrid[row + 1][column] = 0;
+            }
+            // changes values for the box 1 up
+            if (intGrid[row - 1][column] == 0){
+              intGrid[row - 1][column] = 1;
+            }
+            else if (intGrid[row - 1][column] == 1){
+              intGrid[row - 1][column] = 0;
+            }
+            // changes values for the box 1 right
+            if (intGrid[row][column + 1] == 0){
+              intGrid[row][column + 1] = 1;
+            }
+            else if (intGrid[row][column + 1] == 1){
+              intGrid[row][column + 1] = 0;
+            }
+            // changes values for the box 1 left
+            if (intGrid[row][column - 1] == 0){
+              intGrid[row][column - 1] = 1;
+            }
+            else if (intGrid[row][column - 1] == 1){
+              intGrid[row][column - 1] = 0;
+            }
           }
         }
       }

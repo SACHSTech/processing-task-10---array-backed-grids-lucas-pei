@@ -11,10 +11,6 @@ public class Sketch extends PApplet {
   int intScreenWidth = intCellWidth * intColumnCount + (intMargin * (intColumnCount + 1));
   int intScreenHeight = intCellHeight * intRowCount + (intMargin * (intRowCount + 1));
   int intGrid [][] = new int[10][10];
-  int intLeft;
-  int intRight;
-  int intUp;
-  int intDown;
   /**
    * Called once at the beginning of execution, put your size all in this method
    */

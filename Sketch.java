@@ -307,14 +307,13 @@ public class Sketch extends PApplet {
 
     // counts the amount of green cells in each column
     for (int column = 0; column < intColumnCount; column++) {
-      int intColumnSelected = 0;
       for (int row = 0; row < intRowCount; row++) {
         if (intGrid[row][column] == 1) {
-          intColumnSelected += 1;
+          intColumnGreen += 1;
         }
       }
       // outputs the amount of green cells per column
-      System.out.println("Column " + column  + " has " + intColumnSelected + " cells selected.");
+      System.out.println("Column " + column  + " has " + intColumnGreen + " cells selected.");
       intColumnGreen = 0; // resets variable
     }
 

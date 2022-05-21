@@ -275,7 +275,7 @@ public class Sketch extends PApplet {
     for (int row = 0; row < intRowCount; row++) {
       for (int column = 0; column < intColumnCount; column++) {
         if (intGrid[row][column] == 1) {
-          intTotalGreen += 1;
+          intTotalGreen++;
         }
       }
     }
@@ -287,10 +287,10 @@ public class Sketch extends PApplet {
     for (int row = 0; row < intRowCount; row++) {
       for (int column = 0; column < intColumnCount; column++) {
         if (intGrid[row][column] == 1) {
-          intRowGreen += 1;
+          intRowGreen++;
           // if there are 3 consecutive green cells in a row, add one for every extra cell in the row
           if (column >= 2 && intGrid[row][column - 1] == 1 && intGrid[row][column - 2] == 1) {
-            intConsecutive += 1;
+            intConsecutive++;
             // output the variable and move to next row if at column 10
             // if there are no more continuous green cells but still more squares in the row, go back up the loop and continue searching down the row 
             if (column == 9 || intGrid[row][column + 1] == 0) {
@@ -309,7 +309,7 @@ public class Sketch extends PApplet {
     for (int column = 0; column < intColumnCount; column++) {
       for (int row = 0; row < intRowCount; row++) {
         if (intGrid[row][column] == 1) {
-          intColumnGreen += 1;
+          intColumnGreen++;
         }
       }
       // outputs the amount of green cells per column
